@@ -4,7 +4,7 @@ drop table if exists `taxtable`
 ;
 create table `taxtable` (
 `tax1` double not null,
-`tax1` double null
+`tax2` double null
 )
 ;
 

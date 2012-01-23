@@ -8,7 +8,7 @@
 		<td>&nbsp;</td></tr>
 		<tr>
 			<td><b>Description</b></td>
-			<td><input type=text size=30 value='{$description}' name=descript></td>
+			<td><input type="text" size="30" maxlength="30" value="{$description}" name="descript"></td>
         		<td><b>Price</b></td>
 			<td>$<input type=text value='{$normal_price}' name=price size=10><input type=hidden value='{$normal_price}' name=currentprice></td>
 		</tr>

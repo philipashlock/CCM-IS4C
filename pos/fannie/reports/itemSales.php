@@ -126,7 +126,7 @@ if (isset($upc)) {
 		}
 		elseif (isset($todayonly)) { $table = 'dtransactions	'; }
 //		elseif ($year1 == date('Y')) { $table = 'dtransactions'; }
-		else { $table = 'dlog_' . $year1; }
+		else { $table = 'dlog'; }
  		if (isset($todayonly)) {
 		$date2a = date('Y-m-d') . " 23:59:59";
 		$date1a = date('Y-m-d') . " 00:00:00"; }
@@ -149,7 +149,7 @@ if (isset($upc)) {
 				p.scale as Scale
 				FROM is4c_log.$table t, is4c_op.products p, is4c_op.subdepts s, is4c_op.departments d
 				WHERE SUBSTR(t.upc,2) = SUBSTR(p.upc,2) AND s.subdept_no = p.subdept AND t.department = d.dept_no 
-				AND t.datetime BETWEEN '$date1a' AND '$date2a' 
+				AND t.tdate BETWEEN '$date1a' AND '$date2a' 
 				AND t.emp_no <> 9999
 				AND t.trans_status <> 'X'
 				AND (t.upc = '$upc' OR t.upc = '$dupc')
@@ -168,10 +168,10 @@ if (isset($upc)) {
 				p.scale as Scale
 				FROM is4c_log.$table t, is4c_op.products p, is4c_op.subdepts s, is4c_op.departments d
 				WHERE t.upc = p.upc AND s.subdept_no = p.subdept AND t.department = d.dept_no 
-				AND t.datetime BETWEEN '$date1a' AND '$date2a' 
+				AND t.tdate BETWEEN '$date1a' AND '$date2a' 
 				AND t.emp_no <> 9999
 				AND t.trans_status <> 'X'
-				AND t.description LIKE '%$upc%'
+				AND p.description LIKE '%$upc%'
 				GROUP BY CONCAT(t.upc, '-',t.unitprice)
 				ORDER BY Price";
 		}

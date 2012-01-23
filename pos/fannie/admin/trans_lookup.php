@@ -72,7 +72,7 @@ if ((isset($_POST['submitted'])) || (isset($_GET['sort']))) { // If the form has
                     $transtable = 'dtransactions';
                 } else {
 					$year = idate('Y',strtotime($da));
-					$transtable = 'dlog_' . $year;
+					$transtable = 'dtransactions'; // $transtable = 'dlog_' . $year;
                 }
 	}
         
@@ -314,7 +314,7 @@ if ((isset($_POST['submitted'])) || (isset($_GET['sort']))) { // If the form has
 //     print_r($var);
 //     print "</pre>";
 // }  
-// 
+//
 // debug_p($_REQUEST, "all the data coming in");
 
 // Always show the form.

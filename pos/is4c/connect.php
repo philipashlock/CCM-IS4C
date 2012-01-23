@@ -35,14 +35,14 @@ if (!function_exists("wmdiscount")) include("prehkeys.php");
 
 function tDataConnect()
 {
-	$connection = sql_connect("127.0.0.1", $_SESSION["localUser"], $_SESSION["localPass"]);
+	$connection = sql_connect($_SESSION["localhost"], $_SESSION["localUser"], $_SESSION["localPass"]);
 	$dbID = sql_select_db($_SESSION["tDatabase"], $connection);
 	return $connection;
 }
 
 function pDataConnect()
 {
-	$connection = sql_connect("127.0.0.1", $_SESSION["localUser"], $_SESSION["localPass"]);
+	$connection = sql_connect($_SESSION["localhost"], $_SESSION["localUser"], $_SESSION["localPass"]);
 	sql_select_db($_SESSION["pDatabase"], $connection);
 	return $connection;
 }

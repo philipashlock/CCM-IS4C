@@ -50,7 +50,7 @@ $trans_array = explode('-',$t_id);
 	$trans_no = $trans_array[5];
 
  if ($year == date('Y') && $month == date('m') && $day == date('d')) { $table = "dtransactions";}
- else { $table = "dlog_" . date('Y');}
+ else { $table = 'dtransactions'; } //$table = "dlog_" . date('Y');}
 //$table = "dlog_" . $year;
 
 // ccm-rle 9-25-09 - is4c vs. fannie use a different table, the new version of fannie code references dlog_2009 in various places whereas there is no code to change or create a new table for each year yet. will communicate with joel about this. the below commented out variable declaration was done by me to try to override this but it occurs at other places so I should figure out a solution and write code to generate a new table for each year. will duplicate current dlog table to a year based one initially for testing purposes.
@@ -64,6 +64,7 @@ $query = "SELECT * FROM is4c_log.$table
 	ORDER BY trans_id";
 
 //echo $query;
+
 $result = mysql_query ($query);
 
 echo "<table border=0 cellpadding=0 width=375px>";

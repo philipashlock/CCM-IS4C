@@ -158,7 +158,7 @@ while ($row = mysql_fetch_row($result)) {
 //	echo '<th><input type="text" name="CardNo[' . $id . ']" maxlength="5" size="5" value="' . $row[9] . '" /></td>';
 //	echo '<th><input type="text" name="Wage[' . $id . ']" maxlength="6" size="6" value="' . number_format($row[10], 2) . '" /></td>';
 	echo "<td><input type='checkbox' name='EmpActive[" . $id . "]'";
-	if ($row[6] == 1) echo ' CHECKED';
+	if ($row[6] == 1) echo ' CHECKED>';
 	echo "</td>";
 	echo "<td><input type=hidden name='id[]' value=".$row[0].">&nbsp;</td></tr>\n";
 }
@@ -174,12 +174,14 @@ while ($row = mysql_fetch_row($result)) {
 		<option value='WORKING MEMBER'>Working Member</option>
 		</select></td>";
 //	echo '<td><input type="text" name="CardNo[' . $max . ']" maxlength="5" size="5"></td>';
-	echo "<td><input type='checkbox' name='EmpActive[" . $max . "]'";
+	echo "<td><input type='checkbox' name='EmpActive[" . $max . "]'>";
 	echo "</td>";
 	echo "<td><input type='hidden' name='add' value='" . $max . "'>&nbsp;</td></tr>\n";
 
 echo "<tr><td><input type=submit name=submit value=submit></td></tr>";
 echo "</table></form>";
+
+
 
 include ('../src/footer.html');
 ob_end_flush();

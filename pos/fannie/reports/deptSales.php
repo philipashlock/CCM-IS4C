@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
 		exit();
 	}
 //	elseif ($year1 == date('Y')) { $table = 'dtransactions'; }
-	else { $table = 'dlog_' . $year1; }
+	else { $table = 'dlog'; }
 
 	$date2a = $date2 . " 23:59:59";
 	$date1a = $date1 . " 00:00:00";	
@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
 		$query1 = "SELECT d.dept_name,ROUND(SUM(t.total),2) AS total
 			FROM is4c_op.departments AS d, is4c_log.$table AS t
 			WHERE d.dept_no = t.department
-			AND t.datetime >= '$date1a' AND t.datetime <= '$date2a'
+			AND t.tdate >= '$date1a' AND t.tdate <= '$date2a'
 			AND t.department IN($deptArray)
 			AND t.trans_subtype NOT IN ('MC','IC')
 			AND t.trans_status <> 'X'
@@ -126,7 +126,7 @@ if (isset($_POST['submit'])) {
 		$query2 = "SELECT d.dept_name AS Department,ROUND(SUM(t.total),2) AS open_dept
 			FROM is4c_op.departments AS d,is4c_log.$table AS t 
 			WHERE d.dept_no = t.department
-			AND t.datetime >= '$date1a' AND t.datetime <= '$date2a' 
+			AND t.tdate >= '$date1a' AND t.tdate <= '$date2a' 
 			AND t.department IN($deptArray)
 			AND t.trans_type = 'D' 
 			AND t.trans_subtype NOT IN ('MC','IC')
@@ -160,7 +160,7 @@ if (isset($_POST['submit'])) {
                 $query6 = "SELECT d.dept_name AS Department, ROUND( SUM( t.total * ( t.percentDiscount /100 ) ) , 2 ) AS discounttotal
                 FROM is4c_op.departments AS d, is4c_log.$table AS t
                 WHERE d.dept_no = t.department
-                AND t.datetime >= '$date1a' AND t.datetime <= '$date2a'
+                AND t.tdate >= '$date1a' AND t.tdate <= '$date2a'
                 AND t.department IN ($deptArray)
                 AND t.trans_subtype NOT IN ('MC', 'IC')
                 AND t.trans_status <> 'X'
@@ -196,7 +196,7 @@ if (isset($_POST['submit'])) {
                 $query7 = "SELECT d.dept_name AS Department, ROUND( SUM( t.total * 0.0675 ) , 2 ) AS taxtotal 
                 FROM is4c_op.departments AS d, is4c_log.$table AS t
                 WHERE d.dept_no = t.department
-                AND t.datetime >= '$date1a' AND t.datetime <= '$date2a'
+                AND t.tdate >= '$date1a' AND t.tdate <= '$date2a'
                 AND t.department IN ($deptArray)
 		AND t.tax = 1
                 AND t.trans_subtype NOT IN ('MC', 'IC')
@@ -254,7 +254,7 @@ if (isset($_POST['submit'])) {
 			AND t.upc NOT LIKE 'd%' 
                         AND t.upc NOT LIKE '%DP%'
 			AND t.department IN($deptArray) 
-			AND t.datetime >= '$date1a' AND t.datetime <= '$date2a' 
+			AND t.tdate >= '$date1a' AND t.tdate <= '$date2a' 
 			AND t.emp_no <> 9999
 			AND t.trans_status <> 'X'
 			$inUseA
@@ -377,7 +377,7 @@ if (isset($_POST['submit'])) {
 			FROM is4c_log.$table t, is4c_op.products p
 			WHERE SUBSTR(t.upc,2) = SUBSTR(p.upc,2)
 			AND t.department IN($deptArray) 
-			AND t.datetime >= '$date1a' AND t.datetime <= '$date2a' 
+			AND t.tdate >= '$date1a' AND t.tdate <= '$date2a' 
 			AND t.emp_no <> 9999
 			AND t.trans_status <> 'X'
 			AND t.upc NOT LIKE '%DP%'
@@ -479,7 +479,7 @@ if (isset($_POST['submit'])) {
 			WHERE SUBSTR(t.upc,2) = SUBSTR(p.upc,2)
 			AND t.upc LIKE 'd%' 
 			AND t.department IN($deptArray) 
-			AND t.datetime >= '$date1a' AND t.datetime <= '$date2a' 
+			AND t.tdate >= '$date1a' AND t.tdate <= '$date2a' 
 			AND t.emp_no <> 9999
 			AND t.trans_status <> 'X'
 			$inUseA
@@ -578,7 +578,7 @@ if (isset($_POST['submit'])) {
                         WHERE t.upc = p.upc
 			AND t.unitPrice = 0.01
                         AND t.department IN($deptArray) 
-			AND t.datetime >= '$date1a' AND t.datetime <= '$date2a' 
+			AND t.tdate >= '$date1a' AND t.tdate <= '$date2a' 
                         AND t.emp_no <> 9999
                         AND t.trans_status <> 'X'
                         AND t.upc NOT LIKE '%DP%'
@@ -653,7 +653,7 @@ if (isset($_POST['submit'])) {
                         t.datetime AS Datetime
                         FROM is4c_log.$table t
                         WHERE t.department IN($deptArray) 
-                        AND t.datetime >= '$date1a' AND t.datetime <= '$date2a' 
+                        AND t.tdate >= '$date1a' AND t.tdate <= '$date2a' 
                         AND t.emp_no <> 9999
                         AND t.unitPrice = '0.01'
                         AND t.trans_status <> 'X'
@@ -701,7 +701,7 @@ if (isset($_POST['submit'])) {
                         t.datetime AS Datetime
                         FROM is4c_log.$table t
                         WHERE t.department IN($deptArray) 
-                        AND t.datetime >= '$date1a' AND t.datetime <= '$date2a' 
+                        AND t.tdate >= '$date1a' AND t.tdate <= '$date2a' 
                         AND t.emp_no <> 9999
                         AND t.trans_type = 'D'
                         AND t.trans_status <> 'X'

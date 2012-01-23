@@ -72,7 +72,7 @@ setlocale(LC_MONETARY, 'en_US');
 		exit();
 	}
 //	elseif ($year1 == date('Y')) { $table = 'dtransactions'; }
-	else { $table = 'dlog_' . $year1; }
+	else {  $table = 'dtransactions'; // 'dlog_' . $year1; }
 	
 	$date2a = $date2 . " 23:59:59";
 	$date1a = $date1 . " 00:00:00";

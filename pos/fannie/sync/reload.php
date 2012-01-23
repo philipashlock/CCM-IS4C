@@ -35,10 +35,7 @@ include_once("../define.conf");
 function reloadtable($table) {
 //ccm-rle 9-30-09 this is where it is only synching to LANE03, using LANE02 now, will add to database, shouldn't be hardcoded but the previous query might not of been working
 	$aLane = array(
-		LANE01,
-		LANE02,
-                LANE03,
-		LANE04,
+		LANE01
 	);
 //why are these stored in a session?  
 //	$_SESSION["mUser"] = "root";
@@ -150,7 +147,7 @@ function reloadtable($table) {
 					$row = mysql_fetch_array($result);
 					$lane_num_rows = $row[0];
 					if ($lane_num_rows == $server_num_rows) $lane_continue = 1;
-					else echo "<br><font color='#800000' face=helvetica size=-1>".$lane_num.": Number of records do not match. Synchronization refused</font>";
+					else echo "<br><font color='#800000' face=helvetica size=-1>".$lane_num.": Number of records do not match for table '$table'. Synchronization refused. Lane # $lane_num_rows / Server # $server_num_rows</font>";
 
 				}
 				else echo "<br><font color='#800000' face=helvetica size=-1>Unable to load new data onto ".$lane_num."</font>";
@@ -198,12 +195,12 @@ function synctable($table,$serveruser,$serverpass='',$laneuser,$lanepass='',$opD
 		$serverpass = "";
 	}
 	else {
-		$serverpass = "-p ". $serverpass;
+		$serverpass = "--password=". $serverpass;
 	}
 //TODO need to use server user and lane user not root
 	$sync =  "mysqldump -u " . $serveruser . " " .$serverpass." -t ".$opDB." ".$table
 		  ." | mysql -u " . $laneuser . " " .$lanepass." -h ".$lane." ".$opDB." 2>&1";
-/////	echo $sync;
+//	echo $sync;
 	$error = 0;
 	$output = "";
 	exec($sync, $aResult);

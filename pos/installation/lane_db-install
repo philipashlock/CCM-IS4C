@@ -25,7 +25,41 @@ cd /pos/installation/mysql/script
 ${CMD} < create_lane_db
 
 
-cd ../translog/tables
+cd ../opdata/tables
+
+${CMD} < chargecode.table
+${CMD} < couponcodes.table
+${CMD} < custdata.table
+${CMD} < departments.table
+${CMD} < employees.table
+${CMD} < globalvalues.table
+${CMD} < products.table
+${CMD} < promomsgs.table
+${CMD} < tenders.table
+${CMD} < taxtable.table
+
+cd ../data
+
+${CMD} < couponcodes.insert
+${CMD} < custdata.insert
+${CMD} < departments.insert
+${CMD} < employees.insert
+${CMD} < globalvalues.insert
+echo "1\n"
+${CMD} < products.insert
+echo "2\n"
+${CMD} < tenders.insert
+echo "3\n"
+${CMD} < taxtable.insert
+
+cd ../views
+echo "4\n"
+${CMD} < chargecodeview.viw
+echo "5\n"
+${CMD} < memchargebalance.viw
+
+
+cd ../../translog/tables
 
 ${CMD} < activities.table
 ${CMD} < activitylog.table
@@ -67,32 +101,6 @@ ${CMD} < staffdiscountremove.viw
 ${CMD} < memchargetotals.viw
 
 
-cd ../../opdata/tables
-
-${CMD} < chargecode.table
-${CMD} < couponcodes.table
-${CMD} < custdata.table
-${CMD} < departments.table
-${CMD} < employees.table
-${CMD} < globalvalues.table
-${CMD} < products.table
-${CMD} < promomsgs.table
-${CMD} < tenders.table
-
-cd ../data
-
-${CMD} < couponcodes.insert
-${CMD} < custdata.insert
-${CMD} < departments.insert
-${CMD} < employees.insert
-${CMD} < globalvalues.insert
-${CMD} < products.insert
-${CMD} < tenders.insert
-
-cd ../views
-
-${CMD} < chargecodeview.viw
-${CMD} < memchargebalance.viw
 
 
 cd ../../is4c_op/tables

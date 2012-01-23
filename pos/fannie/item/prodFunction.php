@@ -21,7 +21,7 @@
 *********************************************************************************/
 //	TODO -- Add javascript for batcher product entry popup window		~joel 2007-08-21
 
-include_once($_SERVER["DOCUMENT_ROOT"].'/src/mysql_connect.php');
+include_once('/pos/fannie/src/mysql_connect.php');
 
 function itemTemplate($upc) {
 	$resultItem = selectProduct($upc);
@@ -83,7 +83,7 @@ WHERE l.upc = '%s'",$upc);
 
 
 function deptDropDowns() {
-			require_once($_SERVER["DOCUMENT_ROOT"].'/src/chainedSelectors.php');
+			require_once('/pos/fannie/src/chainedSelectors.php');
 
 			$selectorNames = array(
 				CS_FORM=>"pickSubDepartment", 
@@ -165,10 +165,10 @@ $query = sprintf("UPDATE products
 			}
                         $vendoresult = mysql_query(sprintf("select vendorid from vendors where lower(vendor) = lower('%s')",$_POST['vendor']));
                         if (itemRows($vendorresult) == 0) {
-									                                insertVendor($_POST['vendor']);
+				insertVendor($_POST['vendor']);
 			}
 
-		       }
+		}
 }
 
 
