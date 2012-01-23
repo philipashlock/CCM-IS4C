@@ -21,6 +21,48 @@
 
 *********************************************************************************/
 ?>
+
+<head>
+
+	<script src="js/shortcut.js" type="text/javascript"></script>
+	
+
+	<script type="text/javascript">
+
+	
+	init();
+	
+	function init() {
+		shortcut.add("Ctrl+9",function() {
+			
+
+			var totalbox;
+			totalbox = parent.main_frame.document.getElementById("runningtotal").innerHTML;
+
+			balance_total = parseFloat(totalbox).toFixed(2) * 100;
+
+			//alert("Balance is " + balance_total);
+						
+			fieldbox = document.forms[0].elements["reginput"];
+		        fieldbox.value = balance_total;
+			
+			
+			
+			
+		},{
+			'type':'keydown',
+			'propagate':true,
+			'target':document
+		});
+	};
+		
+	</script>
+	
+
+</head>
+
+
+
 <BODY onload="document.form.reginput.focus();">
 <TABLE border='0' cellpadding='0' cellspacing='0'>
 	<TR>
@@ -148,4 +190,7 @@ switch(ieKey)
 
 
 </SCRIPT>
+
+
+
 </BODY>

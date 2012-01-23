@@ -167,17 +167,17 @@ echo "<TD width='117' height='60' align='center'><FONT face='arial' color='#8080
 if ($_SESSION["ttlflag"] == 1 && $_SESSION["End"] != 1) {
 
 	if ($_SESSION["fntlflag"] == 1) {
-		echo "<TD width='170' height='60' align='center' bgcolor='white'><FONT face='arial' size='+3' color='#800080'><B>".number_format($_SESSION["fsEligible"], 2)."</B></FONT>";
+		echo "<TD width='170' height='60' align='center' bgcolor='white'><FONT face='arial' size='+3' color='#800080'><span style=\"font-weight:bold\" id=\"runningtotal\">".number_format($_SESSION["fsEligible"], 2)."</span></FONT>";
 		// $_SESSION["fntlflag"] = 0;
 	} else {	
-		echo "<TD width='170' height='60' align='center' bgcolor='white'><FONT face='arial' size='+3' color='#800000'><B>".number_format($_SESSION["runningTotal"], 2)."</B></FONT>";
+		echo "<TD width='170' height='60' align='center' bgcolor='white'><FONT face='arial' size='+3' color='#800000'><span style=\"font-weight:bold\" id=\"runningtotal\">".number_format($_SESSION["runningTotal"], 2)."</span></FONT>";
 	}
 }
 elseif ($_SESSION["ttlflag"] == 1 && $_SESSION["End"] == 1) {
-	echo "<TD width= '170' height='60' align='center' bgcolor='white'><FONT face='arial' size='+3' color='#004080'><B>".number_format($_SESSION["runningTotal"], 2)."</B></FONT>";
+	echo "<TD width= '170' height='60' align='center' bgcolor='white'><FONT face='arial' size='+3' color='#004080'><span style=\"font-weight:bold\" id=\"runningtotal\">".number_format($_SESSION["runningTotal"], 2)."</span></FONT>";
 }
 else {
-	echo "<TD width='170' height='60' align='center'><FONT face='arial' size='+3'><B>".number_format($_SESSION["runningTotal"], 2)."</B></FONT>";
+	echo "<TD width='170' height='60' align='center'><FONT face='arial' size='+3'><span style=\"font-weight:bold\" id=\"runningtotal\">".number_format($_SESSION["runningTotal"], 2)."</span></FONT>";
 }
 
 echo"</td></tr>\n";
