@@ -80,7 +80,7 @@ function printfooter() {
 
 
 // ----------------------First Row Labels ---------------------------------------------------------
-	echo "<link rel=stylesheet type=text/css href=is4c.css>";
+//	echo "<link rel=stylesheet type=text/css href=is4c.css>";
 	echo "<td width=117 bgcolor=white align=center><font face=arial color=#004080 size=-1><b>";
 	echo $strdiscountlabel."</b></font></td>";
 
