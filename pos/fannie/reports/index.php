@@ -34,6 +34,9 @@ include('../src/header.html');
  <a href="plu_report.php"><font size=4>PLU Report</font></a></br>
         List all products for a department that are 5 digit PLUs rather than UPCs
 </br></br>
+ <a href="plu_cashier.php"><font size=4>PLU Cashier Sheet</font></a></br>
+        A cashier friendly version of the PLU report
+</br></br>
 <a href="zero_item_list.php"><font size=4>Zero Item Sales Report</font></a></br>
         List items with no sales in a department for a certain period
 </br></br>
