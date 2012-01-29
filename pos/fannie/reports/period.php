@@ -71,8 +71,9 @@ setlocale(LC_MONETARY, 'en_US');
 			Please retry your query.</p></div>";
 		exit();
 	}
-//	elseif ($year1 == date('Y')) { $table = 'dtransactions'; }
-	else {  $table = 'dtransactions'; // 'dlog_' . $year1; }
+	elseif ($year1 == date('Y')) { $table = 'dtransactions'; }
+//	else { $table = 'dlog_' . $year1; }
+//	else { $table = 'dlog'; }
 	
 	$date2a = $date2 . " 23:59:59";
 	$date1a = $date1 . " 00:00:00";
@@ -302,6 +303,17 @@ if ($gross == 0 || !$gross) $gross = 1; //to prevent division by 0 or division b
 		echo '<br><p>Transaction count&nbsp;&nbsp;=&nbsp;&nbsp;<b>'.$count;
 		echo '</b></p><p>Basket size&nbsp;&nbsp;=&nbsp;&nbsp;<b>'.money_format('%n',$basketsize);
 		echo '</p>';
+
+// Tenders per lane
+$lane = 1;
+   	   while($lane <= 2) {
+		$tenderlane = "select -sum(total) as total, trans_subtype from is4c_log.dtransactions WHERE trans_type = 'T' AND  datetime between '$date1a' and '$date2a' and register_no = $lane group by trans_subtype;";
+		
+		echo '<h4>Tender Report for lane ' . $lane . '</h4>';
+		select_to_table($tenderlane,1,'FFFFFF');
+	$lane++;
+	}
+
 	
 	}		
 			
