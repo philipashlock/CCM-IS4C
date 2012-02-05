@@ -21,7 +21,10 @@
 *********************************************************************************/
 //	TODO -- Add javascript for batcher product entry popup window		~joel 2007-08-21
 
-include_once('/pos/fannie/src/mysql_connect.php');
+//$script_directory = substr($_SERVER['SCRIPT_FILENAME'], 0, strrpos($_SERVER['SCRIPT_FILENAME'], '/'));
+$included_directory = substr(__FILE__, 0, strrpos(__FILE__, '/'));
+
+include_once("$included_directory/../src/mysql_connect.php");
 
 function itemTemplate($upc) {
 	$resultItem = selectProduct($upc);
@@ -83,7 +86,10 @@ WHERE l.upc = '%s'",$upc);
 
 
 function deptDropDowns() {
-			require_once('/pos/fannie/src/chainedSelectors.php');
+	
+			$included_directory = substr(__FILE__, 0, strrpos(__FILE__, '/'));		
+			require_once("$included_directory/../src/chainedSelectors.php");
+
 
 			$selectorNames = array(
 				CS_FORM=>"pickSubDepartment", 
@@ -185,6 +191,7 @@ $brandresult = mysql_query(sprintf("select brandid from brands where lower(brand
 if (itemRows($brandresult) == 0 && !is_null($_POST['brand'])) {
 						                                insertBrand($_POST['brand']);
 }
+
 $vendoresult = mysql_query(sprintf("select vendorid from vendors where lower(vendor) = lower('%s')",$_POST['vendor']));
 if (itemRows($vendorresult) == 0 && !is_null($_POST['vendor'])) {
 
