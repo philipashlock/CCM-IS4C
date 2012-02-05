@@ -1,2 +1,3 @@
-/pos/fannie/src/mysql_connect.php
-/pos/fannie/define.php
+pos/fannie/src/mysql_connect.php
+pos/fannie/src/password_protect_admin.php
+pos/fannie/define.php
